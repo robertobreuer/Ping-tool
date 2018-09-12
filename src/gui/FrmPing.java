@@ -31,7 +31,7 @@ public class FrmPing extends javax.swing.JFrame {
 
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
-                getImage(ClassLoader.getSystemResource("images/icon.png"));
+                getImage(ClassLoader.getSystemResource("img/icon.png"));
         return retValue;
     }
 
@@ -51,8 +51,8 @@ public class FrmPing extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArRes = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblEMail = new javax.swing.JLabel();
+        lblInfo = new javax.swing.JLabel();
         btnDetener = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,21 +84,21 @@ public class FrmPing extends javax.swing.JFrame {
         txtArRes.setRows(5);
         jScrollPane1.setViewportView(txtArRes);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/email.png"))); // NOI18N
-        jLabel3.setToolTipText("Correo de contacto");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblEMail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/email.png"))); // NOI18N
+        lblEMail.setToolTipText("Correo de contacto");
+        lblEMail.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEMail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel3MousePressed(evt);
+                lblEMailMousePressed(evt);
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
-        jLabel4.setToolTipText("Información.");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info.png"))); // NOI18N
+        lblInfo.setToolTipText("Información.");
+        lblInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel4MousePressed(evt);
+                lblInfoMousePressed(evt);
             }
         });
 
@@ -134,8 +134,8 @@ public class FrmPing extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblEMail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblInfo, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(44, 44, 44))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -146,7 +146,7 @@ public class FrmPing extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2))
-                    .addComponent(jLabel3))
+                    .addComponent(lblEMail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -155,7 +155,7 @@ public class FrmPing extends javax.swing.JFrame {
                             .addComponent(btnPing))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1))
-                    .addComponent(jLabel4))
+                    .addComponent(lblInfo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
@@ -226,15 +226,21 @@ public class FrmPing extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPingActionPerformed
 
-    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+    private void lblEMailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEMailMousePressed
         JOptionPane.showMessageDialog(null, "Contacto: rjbr39@gmail.com");        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MousePressed
+    }//GEN-LAST:event_lblEMailMousePressed
 
-    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+    private void lblInfoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfoMousePressed
         JOptionPane.showMessageDialog(null, "Herramienta de Ping y ping sostenido.");        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MousePressed
+    }//GEN-LAST:event_lblInfoMousePressed
 
     private void btnDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetenerActionPerformed
+        try {
+            String[] cmd = {"taskkill", "/f", "/im", "ping.exe"}; //Comando de apagado en windows
+            Runtime.getRuntime().exec(cmd);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
         this.hilo.stop();
         hilo = null;
     }//GEN-LAST:event_btnDetenerActionPerformed
@@ -288,10 +294,10 @@ public class FrmPing extends javax.swing.JFrame {
     private javax.swing.JButton btnPing;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblEMail;
+    private javax.swing.JLabel lblInfo;
     private javax.swing.JTextArea txtArRes;
     private javax.swing.JTextField txtWeb;
     // End of variables declaration//GEN-END:variables

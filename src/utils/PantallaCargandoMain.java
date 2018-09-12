@@ -20,7 +20,7 @@ public class PantallaCargandoMain {
   }
 
   private void inicioPantalla() {
-    ImageIcon myImage = new ImageIcon("images/res.png");
+    ImageIcon myImage = new ImageIcon("img/icon.png");
     screen = new PantallaCargando(myImage);
     screen.setLocationRelativeTo(null);
     screen.setProgresoMax(100);
