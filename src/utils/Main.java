@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package portscanner;
+package utils;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import vistas.MainFrame;
+import gui.FrmPing;
 
 /**
  *
@@ -23,9 +23,9 @@ public class Main {
         try {
             UIManager.setLookAndFeel(
                     UIManager.getSystemLookAndFeelClassName());
-              new PantallaCargandoMain();
-         MainFrame mf = new MainFrame();
-        mf.setVisible(true);
+            new PantallaCargandoMain();
+            FrmPing mf = new FrmPing();
+            mf.setVisible(true);
         } catch (UnsupportedLookAndFeelException e) {
             // handle exception
         } catch (ClassNotFoundException e) {
@@ -35,7 +35,7 @@ public class Main {
         } catch (IllegalAccessException e) {
             // handle exception
         }
-       
+
     }
-    
+
 }
